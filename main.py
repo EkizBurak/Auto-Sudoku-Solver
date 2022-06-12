@@ -490,7 +490,6 @@ def hucreDegeriHesapla():
                         hucreDegerleri["81"] = numpy.delete(hucreDegerleri["81"], numpy.where(hucreDegerleri["81"] == m))
                     except:
                         pass
-
     for sayac,x in enumerate(dikeyAlabilecegiDegerler[0]):
         for m in range(1,10):
             if sayac == 0:
@@ -890,7 +889,7 @@ while True:
                         yatayAlabilecegiDegerler[0][yatayDeger]=numpy.append(numpy.delete(yatayAlabilecegiDegerler[0][yatayDeger], numpy.where(yatayAlabilecegiDegerler[0][yatayDeger] == rakam)),0)
                         dikeyAlabilecegiDegerler[0][dikeyDeger]=numpy.append(numpy.delete(dikeyAlabilecegiDegerler[0][dikeyDeger], numpy.where(dikeyAlabilecegiDegerler[0][dikeyDeger] == rakam)),0)
                         kareninAlabilecegiDegerler[0][sayac]=numpy.append(numpy.delete(kareninAlabilecegiDegerler[0][sayac], numpy.where(kareninAlabilecegiDegerler[0][sayac] == rakam)),0)
-                        hucreDegeriHesapla()
+                    hucreDegeriHesapla()
                     #print(sudoku)
 
 
@@ -933,19 +932,18 @@ while True:
                 yatayDeger=7
             elif x == 61 or x == 62 or x == 63 or x == 70 or x == 71 or x == 72 or x == 79 or x == 80 or x == 81:
                 yatayDeger=8
-
             if len(hucreDegerleri[f"{x}"])==1:
                 sudoku[0][int(str(x / 9.00000009).split(".")[0])][int(list(str(x / 9.00000009).split(".")[1])[0]) - 1] = hucreDegerleri[f"{x}"][0]
                 yatayAlabilecegiDegerler[0][yatayDeger] = numpy.append(numpy.delete(yatayAlabilecegiDegerler[0][yatayDeger],numpy.where(yatayAlabilecegiDegerler[0][yatayDeger] == hucreDegerleri[f"{x}"][0])),0)
                 dikeyAlabilecegiDegerler[0][dikeyDeger] = numpy.append(numpy.delete(dikeyAlabilecegiDegerler[0][dikeyDeger],numpy.where(dikeyAlabilecegiDegerler[0][dikeyDeger] == hucreDegerleri[f"{x}"][0])), 0)
                 kareninAlabilecegiDegerler[0][int(str(x / 9.00000009).split(".")[0])] = numpy.append(numpy.delete(kareninAlabilecegiDegerler[0][int(str(x / 9.00000009).split(".")[0])],numpy.where(kareninAlabilecegiDegerler[0][int(str(x / 9.00000009).split(".")[0])] == hucreDegerleri[f"{x}"][0])), 0)
                 hucreDegeriHesapla()
+
             elif len(hucreDegerleri[f"{x}"])==0:
                 del hucreDegerleri[f"{x}"]
             hucreninIcindekiDegerSayisi=len(hucreDegerleri[f"{x}"])
             hucreninIcindekiYatayDegerKontrol=[]
             hucreninIcindekiDikeyDegerKontrol = []
-
             if x == 1:
                 hucreninIcindekiYatayDegerler=[2,3,10,11,12,19,20,21]
                 hucreninIcindekiDikeyDegerler=[4,7,28,34,33,55,58,61]
@@ -3629,8 +3627,6 @@ while True:
                 del hucreDegerleri[f"{x}"]
         except:
             pass
-    print(hucreDegerleri)
-
     if len(numpy.where(sudoku==0)[2])==0:
         print(sudoku)
         break
